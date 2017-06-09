@@ -1,59 +1,23 @@
 module Allegro
   module WebApi
-    class User
-      attr_reader :client
-      attr_reader :my_data
-
-      def initialize(client)
-        @client = client
-      end
-
+    module User
       def do_get_my_data
-        @my_data = client.call(:do_get_my_data, message: {session_handle: client.session_handle}).
-            body[:do_get_my_data_response][:user_data]
+        @api_client
+          .call(:do_get_my_data, message: {session_handle: @api_client.session_handle})
+          .body[:do_get_my_data_response][:user_data]
       end
 
-      def company
-        my_data[:user_company]
+      def do_show_user(user_id)
+        message = {
+          webapi_key: @api_client.webapi_key,
+          country_id: @api_client.country_code,
+          user_id: user_id
+        }
+
+        @api_client
+            .call(:do_show_user, message: message)
+            .body[:do_show_user_response]
       end
-
-      def id
-        my_data[:user_id]
-      end
-
-      def rating
-        my_data[:user_rating]
-      end
-
-      def email
-        my_data[:user_email]
-      end
-
-      def phone
-        my_data[:user_phone]
-      end
-
-
-      def birth_date
-        my_data[:user_birth_date]
-      end
-
-      def address
-        my_data[:user_address]
-      end
-
-      def city
-        my_data[:user_city]
-      end
-
-      def first_name
-        my_data[:user_first_name]
-      end
-
-      def last_name
-        my_data[:user_last_name]
-      end
-
     end
   end
 end
