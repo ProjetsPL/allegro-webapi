@@ -11,16 +11,12 @@ Allegro api wrapper written in ruby. Basic functions supported.
 
 Add this line to your application's Gemfile:
 
-    gem 'allegro-webapi'
+    gem "allegro-webapi", git: 'git@github.com:ProjetsPL/allegro-webapi.git'
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install allegro-webapi
-
+    
 ## Usage
 
 _Connecting to client_
