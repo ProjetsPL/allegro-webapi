@@ -47,6 +47,7 @@ module Allegro
           log_level  :debug
           pretty_print_xml true
           strip_namespaces true
+          adapter :net_http
         end
       end
     end
