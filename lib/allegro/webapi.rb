@@ -8,6 +8,7 @@ require 'allegro/webapi/utils'
 require 'allegro/webapi/account'
 require 'allegro/webapi/status'
 require 'allegro/webapi/contractor'
+require 'allegro/webapi/listing'
 require 'yaml'
 
 env_file = 'config/local_env.yml'
