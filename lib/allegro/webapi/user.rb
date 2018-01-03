@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Allegro
   module WebApi
     module User
       def do_get_my_data
         @api_client
-          .call(:do_get_my_data, message: {session_handle: @api_client.session_handle})
+          .call(:do_get_my_data, message: { session_handle: @api_client.session_handle })
           .body[:do_get_my_data_response][:user_data]
       end
 
@@ -15,8 +17,8 @@ module Allegro
         }
 
         @api_client
-            .call(:do_show_user, message: message)
-            .body[:do_show_user_response]
+          .call(:do_show_user, message: message)
+          .body[:do_show_user_response]
       end
     end
   end

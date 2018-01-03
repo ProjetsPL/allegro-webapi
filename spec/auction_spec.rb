@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Allegro::WebApi::Auction do
-
   it 'gets necesary fields for the form offer' do
     VCR.use_cassette('form_fields') do
       client = set_client

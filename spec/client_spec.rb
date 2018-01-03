@@ -1,8 +1,8 @@
-#encoding: UTF-8
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Allegro::WebApi::Client do
-
   before do
     @client = Allegro::WebApi::Client.new do |config|
       config.user_login = 'User'
@@ -11,7 +11,6 @@ describe Allegro::WebApi::Client do
       config.country_code = 1
       config.local_version = 1234
     end
-
   end
 
   it 'creates client with proper params' do
@@ -36,7 +35,6 @@ describe Allegro::WebApi::Client do
     before do
       @client = set_client
     end
-
 
     it 'logs in' do
       VCR.use_cassette('login') do

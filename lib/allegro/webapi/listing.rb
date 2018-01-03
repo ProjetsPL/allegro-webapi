@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Allegro
   module WebApi
     module Listing
@@ -16,7 +18,6 @@ module Allegro
           .call(:do_get_items_list, message: message)
           .body[:do_get_items_list_response]
       end
-
     end
   end
 end

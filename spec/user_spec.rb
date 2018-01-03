@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-
 describe Allegro::WebApi::User do
-
   it 'gets my user data' do
     VCR.use_cassette('my_profile_data') do
       client = set_client
@@ -12,7 +12,6 @@ describe Allegro::WebApi::User do
   end
 
   describe 'more specific info' do
-
     before do
       VCR.use_cassette('my_profile') do
         client = set_client

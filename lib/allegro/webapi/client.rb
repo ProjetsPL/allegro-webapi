@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 module Allegro
   module WebApi
     class Client
-
       END_POINT = 'https://webapi.allegro.pl/service.php?wsdl'
 
       attr_accessor :user_login, :webapi_key, :local_version, :country_code
@@ -16,13 +17,13 @@ module Allegro
         @password = Base64.encode64(hash)
       end
 
-      def call(operation_name, locals= {})
-          client.call(operation_name, locals)
+      def call(operation_name, locals = {})
+        client.call(operation_name, locals)
       end
 
       def login
         start_client
-        message =  {user_login: user_login, user_hash_password: password, country_code: country_code, webapi_key: webapi_key, local_version: local_version}
+        message =  { user_login: user_login, user_hash_password: password, country_code: country_code, webapi_key: webapi_key, local_version: local_version }
         response = client.call(:do_login_enc, message: message)
         set_session_handle(response)
         self
@@ -44,7 +45,7 @@ module Allegro
           ssl_verify_mode :none
           wsdl END_POINT
           log  true
-          log_level  :debug
+          log_level :debug
           pretty_print_xml true
           strip_namespaces true
           adapter :net_http

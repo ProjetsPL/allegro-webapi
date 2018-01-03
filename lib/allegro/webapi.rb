@@ -1,4 +1,6 @@
-require "allegro/webapi/version"
+# frozen_string_literal: true
+
+require 'allegro/webapi/version'
 require 'allegro/webapi/auction'
 require 'allegro/webapi/client'
 require 'allegro/webapi/user'
@@ -12,9 +14,11 @@ require 'allegro/webapi/listing'
 require 'yaml'
 
 env_file = 'config/local_env.yml'
-YAML.load(File.open(env_file)).each do |key, value|
-  ENV[key] = value
-end if File.exists?(env_file)
+if File.exist?(env_file)
+  YAML.safe_load(File.open(env_file)).each do |key, value|
+    ENV[key] = value
+  end
+end
 
 module Allegro
   module Webapi
