@@ -19,6 +19,7 @@ module Allegro
 
       def call(operation_name, locals = {})
         client.call(operation_name, locals)
+
       rescue Savon::SOAPFault => error
         # Rescue "Błędny identyfikator sesji. Proszę spróbować zalogować się jeszcze raz!" bug
 
@@ -29,8 +30,8 @@ module Allegro
           response = client.call(:do_login_enc, message: message)
           self.session_handle = response.body[:do_login_enc_response][:session_handle_part]
 
-          locals[:session_handle] = self.session_handle if locals.key? :session_handle
-          locals[:session_id] = self.session_handle if locals.key? :session_id
+          locals[:message][:session_handle] = self.session_handle if locals.try(:[], :message).try(:key?, :session_handle)
+          locals[:message][:session_id] = self.session_handle if locals.try(:[], :message).try(:key?, :session_id)
           # retry only once, need to be refactored
           client.call(operation_name, locals)
         else
