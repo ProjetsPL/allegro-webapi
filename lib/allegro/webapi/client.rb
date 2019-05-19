@@ -5,8 +5,8 @@ module Allegro
     class Client
       END_POINT = 'https://webapi.allegro.pl/service.php?wsdl'
 
-      attr_accessor :user_login, :webapi_key, :local_version, :country_code
-      attr_reader :client, :password, :session_handle
+      attr_accessor :user_login, :webapi_key, :local_version, :country_code, :session_handle
+      attr_reader :client, :password
 
       def initialize
         yield self
