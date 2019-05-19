@@ -29,6 +29,7 @@ module Allegro
           response = client.call(:do_login_enc, message: message)
           self.session_handle = response.body[:do_login_enc_response][:session_handle_part]
 
+          locals[:session_handle] = self.session_handle if locals.key? :session_handle
           # retry only once, need to be refactored
           client.call(operation_name, locals)
         else
