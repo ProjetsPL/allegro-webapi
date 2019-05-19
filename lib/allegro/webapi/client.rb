@@ -19,7 +19,6 @@ module Allegro
 
       def call(operation_name, locals = {})
         client.call(operation_name, locals)
-        binding.pry
       rescue Savon::SOAPFault => error
         # Rescue "Błędny identyfikator sesji. Proszę spróbować zalogować się jeszcze raz!" bug
 
